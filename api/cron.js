@@ -8,7 +8,8 @@ export default async function handler(req, res) {
       }
     });
 
-    return res.status(200).json({ success: true, status: response.status });
+    const body = await response.text();
+    return res.status(200).send(body);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
